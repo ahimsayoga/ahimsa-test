@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import SelectLanguage from './SelectLanguage'
-// import MainMenu from './MainMenu'
+import MainMenu from './MainMenu'
 
 // Create a Wrapper component that'll render a <div> tag with some styles
 const HeaderWrapper = styled.div`
@@ -33,7 +33,7 @@ const Header = (props) => (
         </Link>
       </h1>
       <SelectLanguage langs={props.langs} />
-      {/* <MainMenu locale={props.locale} /> */}
+      <MainMenu locale={props.locale} />
     </HeaderInner>
   </HeaderWrapper>
 )
