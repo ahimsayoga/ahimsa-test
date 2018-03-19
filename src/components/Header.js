@@ -39,6 +39,7 @@ const Header = (props) => (
 )
 
 Header.propTypes = {
+  langs: PropTypes.array,
   locale: PropTypes.string
 }
 
