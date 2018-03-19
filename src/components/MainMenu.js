@@ -1,43 +1,31 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import Link from 'gatsby-link'
 
-import SelectLanguage from './SelectLanguage'
+const ListLink = props =>
+  <li style={{ display: `inline-block`, marginRight: `1rem` }}>
+    <Link to={props.to}>
+      {props.children}
+    </Link>
+  </li>
 
-// Create a Wrapper component that'll render a <div> tag with some styles
-const HeaderWrapper = styled.div`
-  background: rebeccapurple;
-  margin-bottom: 1.45rem;
-`
+const ListLinkByLang = props =>
+  <ul style={{ listStyle: `none`, float: `right` }}>
+    <ListLink to={'/' + props.locale + '/'}>Home</ListLink>
+    <ListLink to={'/' + props.locale + '/about'}>About</ListLink>
+    <ListLink to={'/' + props.locale + '/schedule'}>Schedule</ListLink>
+  </ul>
 
-const HeaderInner = styled.div`
-  margin: 0 auto;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
-`
+const MainMenu = (props) => {
+  return (
+    <section>
+      <ListLinkByLang locale={props.locale} />
+    </section>
+  )
+}
 
-const Header = (props) => (
-  <HeaderWrapper>
-    <HeaderInner>
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to='/'
-          style={{
-            color: 'white',
-            textDecoration: 'none'
-          }}
-        >
-          Ahimsa Yoga
-        </Link>
-      </h1>
-      <SelectLanguage langs={props.langs} />
-    </HeaderInner>
-  </HeaderWrapper>
-)
-
-Header.propTypes = {
+MainMenu.propTypes = {
   locale: PropTypes.string
 }
 
-export default Header
+export default MainMenu
